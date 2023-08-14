@@ -1,10 +1,10 @@
-from typing import Union
-
 from flask import Flask, render_template
 
-app = Flask(__name__)
+app = Flask(__name__, '/static')
 
-@app.get("/")
+@app.route("/")
 def func():
     return render_template('index.html')
 
+if __name__ == '__main__':
+    app.run()
