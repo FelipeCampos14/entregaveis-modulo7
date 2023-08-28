@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ponderada3</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            max-width: 400px;
+            padding: 20px;
+            border: 2px solid #000000; /* Black border for pixelated look */
+            border-radius: 10px; /* Slightly rounded corners for a friendly touch */
+            background-color: #d0d0d0; /* Light gray background */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Slight shadow for depth */
+            position: relative; /* Needed for pseudo-element below */
+        }     
+        h1 {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        input {
+            margin-bottom: 5px;
+            border-radius: 5px;
+        }
+        .submit {
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form action="user_signin" method="get">
+            <h1>LOGIN</h1>
+            <label for="">email:</label>
+            <input type="email" id="email" value="email@teste.com">
+            <br>
+            <label for="">password:</label>
+            <input type="text" id="password" value="password">
+            <br>
+            <button class="submit">Submit</button>
+        </form>
+        <form action="create_user">Não tem conta? Crie uma!
+            <button class="submit" type="submit">Criar</button>
+        </form>
+    </div>
+</body>
+</html>

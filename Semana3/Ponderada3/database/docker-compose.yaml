@@ -1,0 +1,14 @@
+version: '3.1'
+
+services:
+
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postgres_felipe
+      POSTGRES_USER: postgres_felipe
+      POSTGRES_DB: postgres_felipe
+    ports:
+      - 1234:1234
+    container_name: postgres_felipe
