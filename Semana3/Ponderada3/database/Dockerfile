@@ -1,4 +1,4 @@
 FROM postgres:latest
-ENV POSTGRES_PASSWORD=yourpassword
-ENV POSTGRES_USER=postgres
-ENV POSTGRES_DB=postgres
+ENV POSTGRES_PASSWORD=postgres_felipe
+ENV POSTGRES_USER=postgres_felipe
+ENV POSTGRES_DB=postgres_felipe

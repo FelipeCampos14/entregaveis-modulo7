@@ -10,5 +10,5 @@ services:
       POSTGRES_USER: postgres_felipe
       POSTGRES_DB: postgres_felipe
     ports:
-      - 1234:1234
+      - 5432:5432
     container_name: postgres_felipe

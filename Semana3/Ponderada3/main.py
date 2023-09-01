@@ -1,78 +1,65 @@
-# from fastapi import FastAPI, Request, Body, Form
-# from fastapi.responses import HTMLResponse
-# from fastapi.staticfiles import StaticFiles
-# from fastapi.templating import Jinja2Templates
-# from pydantic import BaseModel, Field, EmailStr
-# from fastapi_sqlalchemy import db
-# from fastapi_sqlalchemy import DBSessionMiddleware 
-
-# app = FastAPI()
-
-# templates = Jinja2Templates(directory="templates")
-
-# class User(BaseModel):
-#     id : int = Field(default=None, gt=0)
-#     name: str = Field(default=None)
-#     email: EmailStr = Field(default=None)
-#     password: str = Field(default=None)
-
-# app.add_middleware(DBSessionMiddleware, db_url="postgresql://postgres:password@localhost:5432/postgres")
-# db.init_app(app)
-
-# users = []
-
-# @app.get('/', response_class=HTMLResponse)
-# async def login(request: Request):
-#     return templates.TemplateResponse('login.html', {"request": request})
-
-# @app.post('/user_signup', response_class=HTMLResponse)
-# async def user_signup(name:str=Form(...),email:str=Form(...),password:str=Form(...)):
-#     user = User(name = name, email = email, password = password)
-#     db.session.add(user)
-#     db.session.commit()
-#     return
-
 from flask import Flask, render_template, request
-from flask_sqlalchemy import SQLAlchemy
+from table import create_table, db
+from models import User, Song
 
 app = Flask(__name__)
 
-db = SQLAlchemy()
-
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///project.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://postgres_felipe:postgres_felipe@localhost:5432/postgres_felipe"
 
 db.init_app(app)
 
-with app.app_context():
-    db.create_all()
+create_table(app)
 
-class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String)
-    email = db.Column(db.String)
-    password = db.Column(db.String)
+# Home
 
 @app.route('/')
 def home():
     return render_template('login.html')
 
+# User routes
+
+@app.route('/user_signin', methods=['POST'])
+def sign_in():
+    email = request.form["email"]
+    password = request.form["password"]
+
+    user = User.query.filter_by(email=email).first()
+
+    if password == user.password:
+        return render_template('landingPage.html')
+
 @app.route('/create_user')
 def login():
     return render_template('create.html')
 
-@app.route("/users")
-def user_list():
-    users = db.session.execute(db.select(User).order_by(User.username)).scalars()
-    return render_template("list.html", users=users)
-
 @app.route('/user_signup', methods=['POST'])
-async def user_signup():
-    user = User(name = request.form['name'], 
-                email = request.form['email'], 
-                password = request.form['password'])
+def user_signup():
+    name = request.form['name']
+    email = request.form['email']
+    password = request.form['password']
+
+    user = User(name=name, email=email, password=password)
     db.session.add(user)
     db.session.commit()
-    return
+    return render_template('login.html')
+
+# Song routes
+
+@app.route("/song")
+def user_list():
+    songs = db.session.execute(db.select(Song).order_by(Song.name)).scalars()
+    return render_template("songs.html", songs=songs)
+
+@app.route('/song_add', methods=['POST'])
+def song_addition():
+    name = request.form['name']
+    composer = request.form['composer']
+    album = request.form['album']
+
+    user = Song(name=name, composer=composer, album=album)
+    db.session.add(user)
+    db.session.commit()
+    return 'foi'
 
 if __name__ == '__main__':
     app.run(debug=True)
