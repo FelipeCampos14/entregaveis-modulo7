@@ -43,8 +43,8 @@ model = joblib.load("modelo.pkl")
 @app.get("/predict", response_model=List[float])
 def predict():
     # Prepara uma entrada para predição
-    data = pd.DataFrame([['10000000', '6175', '10000000', '5000000','United States','Games']])
     data_colunas = ['video_views_for_the_last_30_days','creation','subscribers','video views','Country','channel_type']
+    data = pd.DataFrame([['10000000', '6175', '10000000', '5000000','United States','Games']])
     data.columns = data_colunas
     data[data['Country']] = 1
     data[data['channel_type']] = 1

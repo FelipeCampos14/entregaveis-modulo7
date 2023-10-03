@@ -37,19 +37,16 @@
 </head>
 <body>
     <div class="container">
-        <form action="user_signin" method="post">
-            <h1>LOGIN</h1>
-            <label for="">email:</label>
-            <input type="text" id="email" name="email" placeholder="email@teste.com">
+        <form action="/user_signup" method="post">
+            <h1>SIGN UP</h1>
+            <input type="text" id="username" name="username" placeholder="username">
             <br>
-            <label for="">password:</label>
             <input type="text" id="password" name="password" placeholder="password">
             <br>
             <button class="submit">Submit</button>
         </form>
         <form action="user_login_page">
-            <a>Não tem conta? Crie uma!</a>
-            <button class="submit" type="submit">Criar</button>
+            <button class="submit" type="submit">Já tenho conta</button>
         </form>
     </div>
 </body>
