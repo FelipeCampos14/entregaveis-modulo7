@@ -6,10 +6,9 @@ from fastapi.templating import Jinja2Templates
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, Session 
 from fastapi.middleware.cors import CORSMiddleware
-import schemes, models, crud
+from database.db_scripts import schemes, models, crud
 
-
-SQLALCHEMY_DATABASE_URL = "sqlite:///ponderada.db"
+SQLALCHEMY_DATABASE_URL = "sqlite:///database/ponderada.db"
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
