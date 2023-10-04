@@ -1,10 +1,8 @@
 from fastapi import FastAPI, Request, Form, HTTPException
-from typing import Annotated
-from fastapi.responses import HTMLResponse, RedirectResponse
-from fastapi.staticfiles import StaticFiles
+from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker, Session 
+from sqlalchemy.orm import sessionmaker 
 from fastapi.middleware.cors import CORSMiddleware
 from database.db_scripts import schemes, models, crud
 

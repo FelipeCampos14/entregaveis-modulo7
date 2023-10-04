@@ -1,11 +1,11 @@
 version: '3'
 services: 
-  front-back: 
+  front-back:
     image: ponderada-front-back
     restart: always
     network_mode: host
     expose:
-    - "8000"
+    - "80"
     container_name: ponderada-front-back-container
   streamlit:
     image: ponderada-streamlit
@@ -13,4 +13,4 @@ services:
     network_mode: host
     expose:
     - "8051"
-    container_name: prova-streamlit-container
+    container_name: ponderada-streamlit-container

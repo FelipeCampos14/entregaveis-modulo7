@@ -1,4 +1,6 @@
-uvicorn
-sqlalchemy
-fastapi
+fastapi[all]
+uvicorn[standard]
+SQLalchemy
 pydantic
+Jinja2
+python-multipart
