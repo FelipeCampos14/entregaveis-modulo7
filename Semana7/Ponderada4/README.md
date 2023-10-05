@@ -29,6 +29,8 @@ Finalmente é possivel criar um usuario e entra com ele. Já tem um usuário de 
 
 <h3>AWS</h3>
 
+Na implementação na AWS utilizei nginx para rodar o fastapi, porém tive problemas para rodar o streamlit. Até tentei criar duas instâncias para ver se conseguia rodar o streamlit em uma e o fastapi na outra mas não consegui, apesar de ter conseguido executar o arquivo. Em geral tentei mostrar o fluxo da aplicação evidenciando o que funcionou e o que não funcionou.
+
 <video src="demo.mp4" width="640" height="360" controls>
   Your browser does not support the video tag.
 </video>
