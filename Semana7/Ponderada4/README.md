@@ -13,7 +13,7 @@ O streamlit fica acessivel por meio de um iframe, um elemento HTML que permite r
 <h2>Como rodar</h2>
 
 <h3>Local</h3>
-Tive problemas com a AWS, portanto fiz na máquina mesmo, para isso é necessário rodar o streamlit primeiramente:
+Necessário rodar o streamlit primeiramente:
 
 ```
 streamlit run streamlit/streamlit.py
@@ -27,3 +27,8 @@ uvicorn main:app --reload
 
 Finalmente é possivel criar um usuario e entra com ele. Já tem um usuário de teste com username 'teste' e senha 'admin123'.
 
+<h3>AWS</h3>
+
+<video src="demo.mp4" width="640" height="360" controls>
+  Your browser does not support the video tag.
+</video>
